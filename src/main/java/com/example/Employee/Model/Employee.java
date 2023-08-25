@@ -1,37 +1,29 @@
 package com.example.Employee.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.mapping.List;
-
-import java.util.ArrayList;
 
 @Entity
-@Data
-@Table(name="EmployeeDetails")
+@Table(name = "EmployeeDetails")
 public class Employee {
-
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "employee_id")
-        private String id;
+        @Column (name = "employee_id")
+        private long id;
 
-
-        @Column(name = "first-name")
+        @Column (name = "first_name", nullable = false)
         private String firstName;
-        @Column(name="lastname")
+
+        @Column (name = "last_name", nullable = false)
         private String lastName;
+
+        @Column (nullable = false)
         private String email;
-        private String password;
+
+        private long password;
+
         @OneToOne(mappedBy = "employee")
         private UserLogin userLogin;
 
+    }
 
-
-
-
-
-}
